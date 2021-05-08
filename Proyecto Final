@@ -1,0 +1,141 @@
+package com.fundamentos;
+
+import java.util.Scanner;
+
+public class Trabajo_final {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String nombre, celular, distrito, comentario;
+        int codeDistrito, codeTipoVivienda, codeTipoPlan, codeRepetidor;
+        double costoMensual, costoInstalación, metraje;
+
+        comentario = "";
+
+        System.out.println("Ingresa tu nombre completo: ");
+        nombre = scanner.nextLine();
+        System.out.println("Ingresa tu número de celular: ");
+        celular = scanner.nextLine();
+        System.out.println("Ingresa tu distrito de residencia: ");
+        System.out.println("San Miguel - Opción:  1 ");
+        System.out.println("Ate - Opción:  2 ");
+        System.out.println("Surco - Opción:  3 ");
+        System.out.println("Otro - Opción:  4 ");
+        codeDistrito = scanner.nextInt();
+
+        costoMensual = 0;
+        costoInstalación = 0;
+
+        if (codeDistrito == 1 || codeDistrito == 2 || codeDistrito == 3) {
+            System.out.println("Ingresa tu tipo de vivienda: ");
+            System.out.println("Casa- Opción: 1 ");
+            System.out.println("Condominio - Opción:  2 ");
+            codeTipoVivienda = scanner.nextInt();
+
+            if (codeTipoVivienda == 1) {
+                System.out.println("Contamos con los siguientes planes, escoja alguno: ");
+                System.out.println("Solo Intenet - Precio: S./ 89.00 - Opción: 1 ");
+                System.out.println("que tal duo - Precio: S./ 120.00 - Opción: 2 ");
+                System.out.println("que tal trio - Precio: S./ 160.00 - Opción: 3  ");
+                System.out.println("trio canchero - Precio: S./ 580.00 - Opción: 4  ");
+                codeTipoPlan = scanner.nextInt();
+
+                if (codeTipoPlan == 1 || codeTipoPlan == 2 || codeTipoPlan == 3 || codeTipoPlan == 4) {
+                    if (codeTipoPlan == 1) {
+                        costoMensual = costoMensual + 89.00;
+                    } else if (codeTipoPlan == 2) {
+                        costoMensual = costoMensual + 120.00;
+                    } else if (codeTipoPlan == 3) {
+                        costoMensual = costoMensual + 160.00;
+                    } else {
+                        costoMensual = costoMensual + 590.00;
+                    }
+                    costoInstalación = costoInstalación + 160.00;
+
+                    System.out.println("Requiere Repetidor: ");
+                    System.out.println("SI - Opción: 1 ");
+                    System.out.println("NO - Opción: 2 ");
+                    codeRepetidor = scanner.nextInt();
+
+                    if (codeRepetidor == 1) {
+                        costoMensual = costoMensual + 5.00;
+
+                        System.out.println("Ingrese metraje aproximado desde la ubicación del router principal hasta la ubicación del Repetidor");
+                        metraje = scanner.nextDouble();
+
+                        for (int i = 0; i <= metraje; i++) {
+                            if (metraje >= 10.00) {
+                                costoInstalación = costoInstalación + 1.00;
+                            } else {
+                                costoInstalación = costoInstalación + 1.50;
+                            }
+                        }
+                    }
+
+
+                } else {
+                    comentario = "No contamos con un paquete a su gusto.";
+                }
+
+
+            } else if (codeTipoVivienda == 2) {
+                System.out.println("Contamos con los siguientes planes, escoja alguno: ");
+                System.out.println("Solo Intenet - Precio: S./ 85.00 - Opción: 1 ");
+                System.out.println("que tal duo - Precio: S./ 100.00 - Opción: 2 ");
+                System.out.println("que tal trio - Precio: S./ 130.00 - Opción: 3  ");
+                System.out.println("trio canchero - Precio: S./ 580.00 - Opción: 4  ");
+                codeTipoPlan = scanner.nextInt();
+
+                if (codeTipoPlan == 1 || codeTipoPlan == 2 || codeTipoPlan == 3 || codeTipoPlan == 4) {
+                    if (codeTipoPlan == 1) {
+                        costoMensual = costoMensual + 85.00;
+                    } else if (codeTipoPlan == 2) {
+                        costoMensual = costoMensual + 100.00;
+                    } else if (codeTipoPlan == 3) {
+                        costoMensual = costoMensual + 130.00;
+                    } else {
+                        costoMensual = costoMensual + 580.00;
+                    }
+                    costoInstalación = costoInstalación + 120.00;
+
+                    System.out.println("¿Requiere Repetidor? El costo mensual por repetidor es de 5 soles ");
+                    System.out.println("SI - Opción: 1 ");
+                    System.out.println("NO - Opción: 2 ");
+                    codeRepetidor = scanner.nextInt();
+
+                    if (codeRepetidor == 1) {
+                        costoMensual = costoMensual + 5.00;
+
+                        System.out.println("Ingrese el metraje aproximado desde la ubicación del router principal hasta donde desee colocar el repetidor");
+                        metraje = scanner.nextDouble();
+
+                        for (int i = 0; i <= metraje; i++) {
+                            if (metraje >= 10.00) {
+                                costoInstalación = costoInstalación + 1.00;
+                            } else {
+                                costoInstalación = costoInstalación + 1.50;
+                            }
+                        }
+
+                    }
+
+                    comentario = "Espero le puda convenir los precios, esperamos su aceptación.";
+                } else {
+                    comentario = "No contamos con un paquete a su gusto.";
+                }
+
+            } else {
+                comentario = "No contamos con planes para su tipo de vivienda";
+            }
+
+        } else {
+            comentario = "Estimado cliente, aún no contamos con cobertura en su zona";
+        }
+
+        System.out.println("Señor(a): " + nombre);
+        System.out.println("Costo de mensual es: " + costoMensual);
+        System.out.println("Costo de instalación es: " + costoInstalación);
+        System.out.println("Comentario: " + comentario);
+    }
+
+}
